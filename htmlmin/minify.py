@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import re
 from BeautifulSoup import Comment
 from parser import HtmlMinifyParser
 from util import force_decode, between_two_tags
