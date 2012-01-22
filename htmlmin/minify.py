@@ -43,4 +43,10 @@ def html_minify(html_code, ignore_comments=True):
         for index, script in enumerate(exclude_tags[tag]):
             content = content.replace(TAGS_PATTERN % (tag, index), script)
 
+    if ignore_comments:
+        # remove css comments
+        content = re.sub( r'\s*/\*\s*\*/', "$$HACK1$$", content)
+        content = re.sub( r'/\*[\s\S]*?\*/', "", content)
+        content = content.replace( "$$HACK1$$", '/**/')
+
     return content
